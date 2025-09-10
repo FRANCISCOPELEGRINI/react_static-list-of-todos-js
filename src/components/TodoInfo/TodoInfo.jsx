@@ -1,29 +1,9 @@
-export const TodoInfo = ({ componenteLista }) => {
-  let lista;
+// TodoInfo.jsx
+import { UserInfo } from '../UserInfo/UserInfo';
 
-  if (componenteLista.completed) {
-    lista = (
-      <article className="TodoInfo TodoInfo--completed">
-        <h2 className="TodoInfo__title">{componenteLista.title}</h2>
-         {componenteLista.user ? (
-          <a className="UserInfo" href={`mailto:${componenteLista.user.email}`}>
-          {componenteLista.user.name}
-       </a>
-         ) : null}
-      </article>
-    );
-  } else {
-    lista = (
-      <article className="TodoInfo">
-        <h2 className="TodoInfo__title">{componenteLista.title}</h2>
-        {componenteLista.user ? (
-          <a className="UserInfo" href={`mailto:${componenteLista.user.email}`}>
-          {componenteLista.user.name}
-       </a>
-         ) : null}
-      </article>
-    );
-  }
-
-  return lista;
-};
+export const TodoInfo = ({ todo }) => (
+  <article className={`TodoInfo ${todo.completed ? 'TodoInfo--completed' : ''}`}>
+    <h2 className="TodoInfo__title">{todo.title}</h2>
+    {todo.user && <UserInfo user={todo.user} />}
+  </article>
+);
