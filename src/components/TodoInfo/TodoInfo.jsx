@@ -7,3 +7,5 @@ export const TodoInfo = ({ todo }) => (
     {todo.user && <UserInfo user={todo.user} />}
   </article>
 );
+
+
